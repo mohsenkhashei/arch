@@ -45,7 +45,7 @@ class ArchController extends Controller
             DB::commit();
 
             // Redirect or return a response
-            return redirect('story')->with('success', 'Board Created Successfully');
+            return redirect('boards')->with('success', 'Board Created Successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'Board Createion Failed'. $e->getMessage());

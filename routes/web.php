@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('upload');
+    return redirect('home');
 });
 
 Route::get('/create',[\App\Http\Controllers\ArchController::class, 'createBoard']);

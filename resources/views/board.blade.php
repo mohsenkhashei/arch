@@ -17,7 +17,7 @@
                 <div class="col-md-5">
                     <h3>{{ $board->title }}</h3>
                     <p>{{ $board->description }}</p>
-                    <a href="{{url('preview')}}/{{$board->id}}" class="btn btn-warning">view</a>
+                    <a href="{{url('delete')}}/{{$board->id}}" class="btn btn-danger">Delete</a>
                 </div>
                 <div class="col-md-7">
                     <a href="{{url('board')}}/{{$board->id}}" >

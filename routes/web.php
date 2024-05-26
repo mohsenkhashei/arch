@@ -9,7 +9,7 @@ Route::get('/', function () {
 Route::get('/create',[\App\Http\Controllers\ArchController::class, 'createBoard']);
 Route::post('/store',[\App\Http\Controllers\ArchController::class, 'storeBoard']);
 Route::get('/board/{id}',[\App\Http\Controllers\ArchController::class, 'board']);
-Route::get('/preview/{id}',[\App\Http\Controllers\ArchController::class, 'previewBoard']);
+Route::get('/delete/{id}',[\App\Http\Controllers\ArchController::class, 'deleteBoard']);
 Route::post('/addStory',[\App\Http\Controllers\ArchController::class, 'addStory']);
 Route::get('/boards',[\App\Http\Controllers\ArchController::class, 'showBoards']);
 //Route::get('/download',[\App\Http\Controllers\ArchController::class, 'showBoards']);

@@ -5,6 +5,7 @@ use App\Models\Boards;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ArchController extends Controller
 {
@@ -110,13 +111,22 @@ class ArchController extends Controller
         }
     }
 
-    public function previewBoard($id)
+    public function deleteBoard($id)
     {
+
         $board = Boards::with('stories')->where('id', $id)->orderBy('created_at', 'desc')->first();
         if(!$board) {
             abort(404);
         }
-        return view('preview_board', compact('board'));
+        foreach($board->stories()->get() as $story) {
+            if (Storage::exists($story->filepath)) {
+                Storage::delete($story->filepath);
+            }
+        }
+        $board->stories()->delete();
+        $board->delete();
+
+        return redirect('boards');
     }
     public function home()
     {

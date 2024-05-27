@@ -5,7 +5,7 @@
             <h1 style="margin-top: 60px">Boards</h1>
         </div>
         <div class="col-md-6">
-            <a href="{{url('create')}}" class="btn btn-success" >Create New Board</a>
+            <a href="{{url('create')}}" class="btn btn-success" ><span class="fa fa-add"></span> Create New Board</a>
         </div>
     </div>
     <hr />
@@ -17,7 +17,8 @@
                 <div class="col-md-5">
                     <h3>{{ $board->title }}</h3>
                     <p>{{ $board->description }}</p>
-                    <a href="{{url('delete')}}/{{$board->id}}" class="btn btn-danger">Delete</a>
+                    <a href="{{url('delete')}}/{{$board->id}}" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span> Delete</a>
+                    <a href="{{url('board')}}/{{$board->id}}" class="btn btn-info btn-sm"><span class="fa fa-eye"></span> View</a>
                 </div>
                 <div class="col-md-7">
                     <a href="{{url('board')}}/{{$board->id}}" >

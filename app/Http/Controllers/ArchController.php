@@ -11,7 +11,8 @@ class ArchController extends Controller
 {
     public function createBoard()
     {
-        return view('create_board');
+        $title = 'Create Board';
+        return view('create_board', compact('title'));
     }
     public function storeBoard(Request $request)
     {
@@ -55,19 +56,20 @@ class ArchController extends Controller
 
     public function showBoards()
     {
+        $title = 'Boards';
         $boards = Boards::with('stories')->orderBy('created_at', 'desc')->get();
-        // Pass the fetched data to a view
-        return view('board', compact('boards'));
+        return view('board', compact('boards'), compact('title'));
     }
 
 
     public function board($id)
     {
+        $title = 'Edit Board';
         $board = Boards::with('stories')->where('id', $id)->orderBy('created_at', 'desc')->first();
         if(!$board) {
             abort(404);
         }
-        return view('edit_board', compact('board'));
+        return view('edit_board', compact('board'), compact('title'));
     }
 
     public function addStory(Request $request)

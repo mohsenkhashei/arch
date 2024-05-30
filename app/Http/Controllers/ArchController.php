@@ -6,9 +6,16 @@ use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Mpdf\Mpdf;
 
 class ArchController extends Controller
 {
+    public function about()
+    {
+        $title = 'About';
+        return view('about', compact('title'));
+    }
+
     public function createBoard()
     {
         $title = 'Create Board';
@@ -61,6 +68,25 @@ class ArchController extends Controller
         return view('board', compact('boards'), compact('title'));
     }
 
+
+    public function download($id)
+    {
+        $board = Boards::with('stories')->where('id', $id)->orderBy('created_at', 'desc')->first();
+        if(!$board) {
+            abort(404);
+        }
+
+        $html = view('download', compact('board'))->render();
+return $html;
+        // Instantiate mPDF with A4 size
+        $mpdf = new Mpdf(['format' => 'A4']);
+
+        // Write the HTML content to the PDF
+        $mpdf->WriteHTML($html);
+
+        // Output the PDF as a download
+        $mpdf->Output('document.pdf', 'D');
+    }
 
     public function board($id)
     {

@@ -38,7 +38,7 @@
             <p class="h6">{{$board->description}}</p>
         </div>
         <div class="col-md-7">
-                <img src="{{ asset($board->stories[0]->filepath) }}" alt="{{ $board->stories[0]->caption }}" style="height: 400px" class="img-fluid" />
+           <img src="{{ asset($board->stories[0]->filepath) }}" alt="{{ $board->stories[0]->caption }}" style="height: 400px" class="img-fluid" />
         </div>
     </div>
     <div class="row">

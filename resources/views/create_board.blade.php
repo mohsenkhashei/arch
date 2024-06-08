@@ -1,19 +1,20 @@
 @extends('layout.main')
 @section('content')
-<div class="row">
+<div class="row" style="margin-top: 60px" style="animation: fadeInAnimation ease 3s; animation-iteration-count: 1; animation-fill-mode: forwards;">
     <div class="col-md-6" >
-        <h1 style="margin-top: 60px">Create Board</h1>
-        <p>we're happy to hear your feedback</p>
+        <h1 >Create Board</h1>
+        <p>Please Create Your Board</p>
+        <p>We're Happy to Hear Your Feedback</p>
     </div>
-    <div class="col-md-6"></div>
-</div>
-<div class="row">
-
-    <div class="col-md-6"></div>
-
-    <div class="col-md-6">
-        @if(session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
+    <div class="col-md-6" style="animation: fadeInAnimation ease 3s; animation-iteration-count: 1; animation-fill-mode: forwards;">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
         <form action="{{url('store')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -27,7 +28,7 @@
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea class="form-control @error('message') is-invalid @enderror" id="description" name="description" rows="8"></textarea>
-                @error('message')
+                @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

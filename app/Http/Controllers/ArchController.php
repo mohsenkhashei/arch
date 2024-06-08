@@ -1,12 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateBoardRequest;
 use App\Models\Boards;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Mpdf\Mpdf;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
 
 class ArchController extends Controller
 {
@@ -21,13 +24,8 @@ class ArchController extends Controller
         $title = 'Create Board';
         return view('create_board', compact('title'));
     }
-    public function storeBoard(Request $request)
+    public function storeBoard(CreateBoardRequest $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:300',
-            'fileInput' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240', // Max file size: 10MB (10240 KB)
-        ]);
 
         try {
             DB::beginTransaction();
@@ -56,7 +54,7 @@ class ArchController extends Controller
             return redirect('boards')->with('success', 'Board Created Successfully');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('error', 'Board Createion Failed'. $e->getMessage());
+            return redirect()->back()->with('error', 'Board Creation Failed'. $e->getMessage());
 
         }
     }
@@ -75,17 +73,9 @@ class ArchController extends Controller
         if(!$board) {
             abort(404);
         }
+        $debug = true;
+        return view('download', compact('board', 'debug'))->render();
 
-        $html = view('download', compact('board'))->render();
-return $html;
-        // Instantiate mPDF with A4 size
-        $mpdf = new Mpdf(['format' => 'A4']);
-
-        // Write the HTML content to the PDF
-        $mpdf->WriteHTML($html);
-
-        // Output the PDF as a download
-        $mpdf->Output('document.pdf', 'D');
     }
 
     public function board($id)
@@ -166,4 +156,10 @@ return $html;
         Story::truncate();
         return redirect('/');
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
 }

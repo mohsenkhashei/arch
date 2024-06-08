@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-    <div class="row">
+    <div class="row" style="animation: fadeInAnimation ease 3s; animation-iteration-count: 1; animation-fill-mode: forwards;">
         <div class="col-md-5" >
             <h1 style="margin-top: 60px">{{$board->title}}</h1>
             <p class="h6">{{$board->description}}</p>

@@ -55,7 +55,7 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <button type="submit" class="btn button mt-4"><span class="fa fa-sign-up"></span><span class="fa fa-arrow-down"></span>  Submit</button>
-                        <a href="{{route('login')}}" class="btn button mt-4"><span class="fa fa-sign-in"></span> Sign in</a>
+
 
                     </div>
                 </div>

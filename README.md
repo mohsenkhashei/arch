@@ -1,1 +1,1 @@
-## Architecture Board (chama)
+## Architecture Board (Manar)

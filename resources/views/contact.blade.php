@@ -2,11 +2,10 @@
 <html>
     <head>
         @include('layout.head')
-    </head>
-    <body>
-        @include('layout.navbar')
 
-    <section class="hero" style="animation: fadeInAnimation ease 3s; animation-iteration-count: 1; animation-fill-mode: forwards;">
+    </head>
+    <body style="overflow-y: hidden">
+        @include('layout.navbar')
         <div class="row" style="background-color: #2D2F4A; margin-bottom:30px">
             <div class="col-md-4">
 
@@ -18,13 +17,15 @@
 
             </div>
         </div>
-
-
-    </section>
+<div class="container-fluid">
     <section>
         <div class="row justify-content-center">
-            <div class="col-md-4  d-flex justify-content-center align-items-center">
-                <span class="fa fa-phone" style="font-size: 50px; animation: upAndDown 1.2s ease infinite"></span>
+            <div class="col-md-4 ">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <span class="fa fa-phone" style="font-size: 50px; animation: upAndDown 1.2s ease infinite"></span>
+                </div>
+                <a href="tel:+212524310000" style="font-size: 20px; color: white" class="mt-3 d-flex justify-content-center align-items-center">+212 524310000</a>
+
             </div>
             <div class="col-md-4 ">
                 <h3 class="mb-4  d-flex justify-content-center align-items-center">GET IN TOUCH WITH US</h3>
@@ -35,10 +36,11 @@
                 </div>
             </div>
 
-            <div class="col-md-4 d-flex justify-content-center align-items-center">
-                <span class="fa fa-envelope" style="font-size: 50px; animation: upAndDown 1.2s ease infinite"></span>
-
-
+            <div class="col-md-4">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <span class="fa fa-envelope" style="font-size: 50px; animation: upAndDown 1.2s ease infinite"></span>
+                </div>
+                <a href="mailto:contact@archdesignboard.ma" style="font-size: 20px; color: white" class="mt-3 d-flex justify-content-center align-items-center">contact@archdesignboard.ma</a>
             </div>
         </div>
 
@@ -50,49 +52,51 @@
 
 
 
-                    <div class="form-group row mt-4">
+            <div class="form-group row mt-4">
 
-                        <div class="col-sm-12">
-                            <input type="text" placeholder="YOUR NAME" class="form-control" name="name" required>
+                <div class="col-sm-12">
+                    <input type="text" placeholder="YOUR NAME" class="form-control" name="name" required>
 
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
+                </div>
+            </div>
+            <div class="form-group row mt-4">
 
-                        <div class="col-sm-12">
-                            <input type="text" placeholder="YOUR EMAIL" class="form-control" id="email" name="email" required>
+                <div class="col-sm-12">
+                    <input type="text" placeholder="YOUR EMAIL" class="form-control" id="email" name="email" required>
 
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
+                </div>
+            </div>
+            <div class="form-group row mt-4">
 
-                        <div class="col-sm-12">
-                            <input type="text" placeholder="YOUR SUBJECT" class="form-control" id="email" name="email" required>
+                <div class="col-sm-12">
+                    <input type="text" placeholder="YOUR SUBJECT" class="form-control" id="email" name="email" required>
 
-                        </div>
-                    </div>
-                    <div class="form-group row">
+                </div>
+            </div>
+            <div class="form-group row">
 
-                        <div class="col-sm-12">
-                            <textarea class="form-control" id="password" name="password" placeholder="MESSAGE" ></textarea>
+                <div class="col-sm-12">
+                    <textarea class="form-control" id="password" name="password" placeholder="MESSAGE" ></textarea>
 
-                        </div>
-                    </div>
+                </div>
+            </div>
 
-                    <div class="form-group row">
-                        <div class="col-sm-12">
-                            <button  class="btn button mt-4">Submit</button>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12">
-                            <h6>we're happy to hear your feedback</h6>
-                        </div>
-                    </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button  class="btn button mt-4">Submit</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <h6>we're happy to hear your feedback</h6>
+                </div>
+            </div>
 
 
         </div>
     </section>
+</div>
+
 
 
     @include('layout.footer')

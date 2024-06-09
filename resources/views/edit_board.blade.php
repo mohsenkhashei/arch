@@ -44,14 +44,14 @@
             <p class="h6 text-justify">{{$board->description}}</p>
         </div>
         <div class="col-md-6">
-           <img src="{{ asset($board->stories[0]->filepath) }}" alt="{{ $board->stories[0]->caption }}" class="img-fluid" />
+           <img src="{{ asset($board->stories[0]->filepath) }}" alt="{{ $board->stories[0]->caption }}" class="img-fluid mb-3" />
         </div>
     </div>
     <div class="row">
         @if($board->stories(count($board->stories()->get()) > 1))
             @foreach($board->stories->skip(1) as $story)
                 <div class="col-md-6">
-                    <img src="{{ asset($story->filepath) }}" alt="{{ $story->caption }}" class="img-fluid">
+                    <img src="{{ asset($story->filepath) }}" alt="{{ $story->caption }}" class="img-fluid ">
                     <h5>{{ $story->caption }}</h5>
                 </div>
             @endforeach

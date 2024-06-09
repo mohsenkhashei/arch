@@ -66,26 +66,17 @@
     <!-- Subsequent Rows: Image left, Image right -->
 
         @if($board->stories(count($board->stories()->get()) > 1))
-            @foreach($board->stories->skip(1) as $index => $story)
-                @foreach (array_chunk($board->stories->skip(1)->toArray() , 2) as $chunk)
+            @foreach(array_chunk($board->stories->skip(1)->toArray() , 2) as $index => $story)
                     <div class="row">
-                            <div class="col-4 img-container">
-                                <img src="
-                                @if($debug) {{asset($story->filepath)}} @else {{ public_path() .'/'. $story->filepath }} @endif
-                                " alt="{{ $story->caption }}" >
-                                <small>{{ $story->caption }}</small>
+                        @foreach($story as $key => $item)
+                        <div class="col-{{ $key % 2 == 0 ? '4' : '8' }} img-container">
+                                <img src="{{ $debug ? asset($item['filepath']) : public_path() . '/' . $item['filepath'] }}" alt="{{ $item['caption'] }}">
+                                <small>{{ $item['caption'] }}</small>
                             </div>
-                        @if (isset($chunk[1]))
-                            <div class="col-8 img-container">
-                                <img src="
-                                  @if($debug) {{asset($story->filepath)}} @else {{ public_path() .'/'. $story->filepath }} @endif
-                                " alt="{{ $story->caption }}">
-                                <small>{{ $story->caption }}</small>
-                            </div>
-                        @endif
+                        @endforeach
                     </div>
+
                 @endforeach
-            @endforeach
         @endif
 
         </div>

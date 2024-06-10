@@ -36,6 +36,7 @@
     }
     .text {
         padding: 10px;
+        text-align: justify;
     }
     .img-container {
         padding: 10px;
